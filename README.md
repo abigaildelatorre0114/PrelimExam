@@ -1,1 +1,339 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | My Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top left, #4f46e5, transparent 35%),
+        radial-gradient(circle at bottom right, #9333ea, transparent 35%),
+        #09090b;
+      color: white;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      background: rgba(24, 24, 27, 0.75);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      text-align: center;
+      color: #a1a1aa;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #d4d4d8;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #3f3f46;
+      border-radius: 12px;
+      outline: none;
+      background: #18181b;
+      color: white;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    input::placeholder {
+      color: #71717a;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      padding-right: 50px;
+    }
+
+    .show-password {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      color: #a1a1aa;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0 22px;
+      font-size: 13px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #a1a1aa;
+    }
+
+    .remember input {
+      width: auto;
+      accent-color: #6366f1;
+    }
+
+    a {
+      color: #818cf8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #a5b4fc;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .login-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 25px 0;
+      color: #71717a;
+      font-size: 12px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #27272a;
+    }
+
+    .github-button {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #3f3f46;
+      border-radius: 12px;
+      background: #18181b;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .github-button:hover {
+      background: #27272a;
+    }
+
+    .signup {
+      margin-top: 25px;
+      text-align: center;
+      color: #71717a;
+      font-size: 13px;
+    }
+
+    .message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 13px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #86efac;
+    }
+
+    @media (max-width: 480px) {
+      .login-box {
+        padding: 30px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <div class="logo">✦</div>
+
+    <h1>Welcome Back</h1>
+    <p class="description">
+      Sign in to continue to your account
+    </p>
+
+    <form id="loginForm">
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="you@example.com"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            minlength="6"
+            required
+          >
+
+          <button
+            type="button"
+            class="show-password"
+            onclick="togglePassword()"
+          >
+            Show
+          </button>
+        </div>
+      </div>
+
+      <div class="options">
+
+        <label class="remember">
+          <input type="checkbox">
+          Remember me
+        </label>
+
+        <a href="#">Forgot password?</a>
+
+      </div>
+
+      <button type="submit" class="login-button">
+        Sign In
+      </button>
+
+    </form>
+
+    <div class="divider">
+      OR
+    </div>
+
+    <button class="github-button" onclick="githubLogin()">
+      ◉ &nbsp; Continue with GitHub
+    </button>
+
+    <div class="message" id="message">
+      Login form submitted successfully!
+    </div>
+
+    <p class="signup">
+      Don't have an account?
+      <a href="#">Create an account</a>
+    </p>
+
+  </div>
+
+  <script>
+    function togglePassword() {
+      const password = document.getElementById("password");
+      const button = document.querySelector(".show-password");
+
+      if (password.type === "password") {
+        password.type = "text";
+        button.textContent = "Hide";
+      } else {
+        password.type = "password";
+        button.textContent = "Show";
+      }
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message");
+
+      console.log("Login attempt:", email);
+
+      message.style.display = "block";
+    });
+
+    function githubLogin() {
+      alert("Connect this button to GitHub OAuth in your backend.");
+    }
+  </script>
+
+</body>
+</html>
+```
 # PrelimExam
